@@ -22,7 +22,6 @@ public class PanelAgregarPersonas extends JPanel {
 	 */
 	public PanelAgregarPersonas() {
 		super();
-		System.out.println("PANEL");
 		initialize();
 	}
 
@@ -36,7 +35,6 @@ public class PanelAgregarPersonas extends JPanel {
 		panel.setLayout(null);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		System.out.println("INITIALIZE");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNombre.setBounds(105, 103, 45, 13);
 		panel.add(lblNombre);
