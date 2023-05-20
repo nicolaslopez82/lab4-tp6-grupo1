@@ -10,14 +10,14 @@ import presentacion.vista.VentanaPrincipal;
 public class Controlador implements ActionListener {
 
 	private VentanaPrincipal ventanaPrincipal;
-	private PersonaNegocio pNeg;
+	private PersonaNegocio personaNegocio;
 	private PanelAgregarPersonas pnlAgregarPersona;
 
-	public Controlador(VentanaPrincipal vista, PersonaNegocio pNeg) {
+	public Controlador(VentanaPrincipal vista, PersonaNegocio personaNegocio) {
 		// TODO Auto-generated constructor stub
 		// Guardo todas las instancias que recibo en el constructor
 		this.ventanaPrincipal = vista;
-		this.pNeg = pNeg;
+		this.personaNegocio = personaNegocio;
 		// Instancio los paneles
 		this.pnlAgregarPersona = new PanelAgregarPersonas();
 		this.ventanaPrincipal.getMntmAgregar().addActionListener(a -> EventoClickMenu_AbrirPanel_AgregarPersona(a));
