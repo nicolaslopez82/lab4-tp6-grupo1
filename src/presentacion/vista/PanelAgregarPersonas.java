@@ -2,10 +2,9 @@ package presentacion.vista;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 public class PanelAgregarPersonas extends JPanel {
@@ -16,6 +15,7 @@ public class PanelAgregarPersonas extends JPanel {
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldDni;
+	private JButton btnAceptar;
 
 	/**
 	 * Create the panel.
@@ -72,4 +72,47 @@ public class PanelAgregarPersonas extends JPanel {
 		panel.add(btnAceptar);
 
 	}
+	
+	public JButton getBtnAceptar() {
+		return btnAceptar;
+	}
+
+	public void setBtnAceptar(JButton btnAceptar) {
+		this.btnAceptar = btnAceptar;
+	}
+
+	public JTextField getTxtFieldNombre() {
+		return textFieldNombre;
+	}
+
+	public void setTextFieldNombre(JTextField textFieldNombre) {
+		this.textFieldNombre = textFieldNombre;
+	}
+
+	public JTextField getTextFieldApellido() {
+		return textFieldApellido;
+	}
+
+	public void setTextFieldApellido(JTextField textFieldApellido) {
+		this.textFieldApellido = textFieldApellido;
+	}
+
+	public JTextField getTextFieldDni() {
+		return textFieldDni;
+	}
+
+	public void setTextFieldDni(JTextField textFieldDni) {
+		this.textFieldDni = textFieldDni;
+	}
+	
+	public void mostrarMensaje(String mensaje)
+	{
+		JOptionPane.showMessageDialog(null, mensaje);
+	}
+	
+	public void show()
+	{
+		this.setVisible(true);
+	}
+	
 }
