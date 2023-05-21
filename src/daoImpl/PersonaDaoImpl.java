@@ -21,7 +21,9 @@ public class PersonaDaoImpl implements PersonaDao{
 	
 	private static final String insert = "INSERT INTO Personas(dni, nombre, apellido) VALUES(?, ?, ?)";
 	private static final String delete = "DELETE FROM Personas WHERE dni = ?";
+	private static final String update = "UPDATE Personas SET nombre = ?, apellido = ? WHERE dni = ?";
 	private static final String readall = "SELECT * FROM Personas";
+	private static final String findPersonaByDNI = "SELECT * FROM Personas WHERE dni = ?";
 
 	@Override
 	public boolean insert(Persona persona) {
@@ -103,6 +105,63 @@ public class PersonaDaoImpl implements PersonaDao{
 		String nombre = resultSet.getString("Nombre");
 		String apellido = resultSet.getString("Apellido");
 		return new Persona(dni, nombre, apellido);
+	}
+
+	@Override
+	public boolean findPersonaByDNI(String dni) {
+		
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean isPersonaEncontrada = false;
+		
+		try 
+		{
+			statement = conexion.prepareStatement(findPersonaByDNI);
+			statement.setString(1, dni);
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				isPersonaEncontrada = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return isPersonaEncontrada;
+	}
+
+	@Override
+	public boolean update(Persona persona) {
+		
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean isUpdateExitoso = false;
+		
+		try
+		{
+			statement = conexion.prepareStatement(update);			
+			statement.setString(1, persona.getNombre());
+			statement.setString(2, persona.getApellido());
+			statement.setString(3, persona.getDni());
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				isUpdateExitoso = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return isUpdateExitoso;
+
 	}
 
 }
