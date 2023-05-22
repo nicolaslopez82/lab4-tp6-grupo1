@@ -30,6 +30,7 @@ public class Controlador implements ActionListener {
 		this.pnlEditarPersona = new PanelEditarPersona();
 		this.pnlEliminarPersona = new PanelEliminarPersona();
 		this.pnlListarPersona = new PanelListarPersonas();
+		
 		this.ventanaPrincipal.getMntmAgregar().addActionListener(a -> EventoClickMenu_AbrirPanel_AgregarPersona(a));
 		this.ventanaPrincipal.getMntmEliminar().addActionListener(a -> EventoClickMenu_AbrirPanel_EliminarPersona(a));
 		this.ventanaPrincipal.getMntmListar().addActionListener(a -> EventoClickMenu_AbrirPanel_ListarPersona(a));
